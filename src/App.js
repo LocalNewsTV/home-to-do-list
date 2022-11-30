@@ -21,14 +21,17 @@ function App() {
     {task: "So They cannot be removed", date: sampleDate},
     {task: "Or added to", date: sampleDate},
   ];
-  const [taskList, setTaskList] = React.useState(sampleList);
+  const [taskList, setTaskList] = React.useState([]);
   React.useEffect(() => {
     (async() => {
       fetch("http://10.0.0.61:3001/fetchTasks", { method: "GET" })
       .then((data) => data.json())
       .then((json) => {
         setTaskList(json);
-      });
+      })
+      .catch(error => {
+        setTaskList(taskList);
+      })
     })();
   }, []);
 
