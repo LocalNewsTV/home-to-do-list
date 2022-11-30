@@ -30,7 +30,7 @@ function App() {
         setTaskList(json);
       })
       .catch(error => {
-        setTaskList(taskList);
+        setTaskList(sampleList);
       })
     })();
   }, []);
