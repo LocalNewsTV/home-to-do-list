@@ -12,7 +12,10 @@
   padding: 5px 5px;
 }
 .listItem .date, .listItem .task{ text-align: left; }
-.listItem .task { padding-left: 15px;}
+.listItem .task { 
+  word-wrap: break-word;
+  padding-left: 15px;
+}
 .listItemCenter { width: 200px; }
 
 .listItem .delete {
@@ -29,4 +32,12 @@
 }
 .delete .buttonDelete:hover {
   background: black;
+}
+@media only screen and (max-width: 667px) {
+  .listItem .date, .listItem .task, .listItem .delete{
+    width: 100%;
+  }
+  .delete .buttonDelete {
+    width: 75px;
+  }
 }

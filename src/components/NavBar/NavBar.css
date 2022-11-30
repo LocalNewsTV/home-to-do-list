@@ -1,0 +1,22 @@
+#nav{
+display: flex;
+flex-direction: center;
+background-color: rgb(59,59,56);
+color: white;
+border-bottom: 1px solid black;
+
+}
+.nav-left{
+align-items: left;
+}
+.navLink {
+ text-decoration: none;
+ font-family: Arial, Helvetica, sans-serif;
+ color: white;
+ margin: 5px;
+ padding: 5px;
+
+}
+.navLink:hover {
+  color: #669966;
+}

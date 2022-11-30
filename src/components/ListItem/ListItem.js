@@ -4,7 +4,6 @@ import {hookContext} from "../../App.js"
 export const ListItem = ({task, date}) => {
   const {setTaskList} = React.useContext(hookContext);
   const handleDelete = (task) => {
-    console.log(task);
     const data = JSON.stringify({"task": task});
     fetch("http://10.0.0.61:3001/delete",{
       method: "POST",

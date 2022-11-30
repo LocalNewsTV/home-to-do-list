@@ -6,7 +6,8 @@
   align-items: center;
 }
 .createTask #taskInput {
-  width: 300px;
+  max-width: 300px;
+  
   height: 40px;
   padding-left: 10px;
   border-radius: 10px;
@@ -21,4 +22,13 @@
   border-radius: 10px;
   padding: 0px 10px;
   color: black;
+}
+@media only screen and (max-width: 667px) {
+  .createTask #taskInput {
+    max-width: 200px;
+
+  }
+  .flex {
+    margin: 10px;
+  }
 }
