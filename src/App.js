@@ -9,7 +9,7 @@ import './components/TaskList/TaskList.css';
 import './components/CreateTask/CreateTask.css';
 import './components/NoTasks/NoTasks.css';
 import './App.css';
-
+const vals = require('./routing_info.js');
 
 export const hookContext = React.createContext();
 
@@ -24,7 +24,7 @@ function App() {
   const [taskList, setTaskList] = React.useState([]);
   React.useEffect(() => {
     (async() => {
-      fetch("http://10.0.0.61:3001/fetchTasks", { method: "GET" })
+      fetch(vals.get, { method: "GET" })
       .then((data) => data.json())
       .then((json) => {
         setTaskList(json);

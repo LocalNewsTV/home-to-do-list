@@ -1,11 +1,12 @@
 import React from 'react';
 import {hookContext} from "../../App.js"
+const vals = require('../../routing_info.js');
 
 export const ListItem = ({task, date}) => {
   const {setTaskList} = React.useContext(hookContext);
   const handleDelete = (task) => {
     const data = JSON.stringify({"task": task});
-    fetch("http://10.0.0.61:3001/delete",{
+    fetch(vals.delete,{
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: data

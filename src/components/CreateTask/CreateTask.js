@@ -1,5 +1,6 @@
 import React from "react";
 import {hookContext} from "../../App.js";
+const vals = require('../../routing_info.js');
 
 export const CreateTask = () => {
   const { setTaskList} = React.useContext(hookContext);
@@ -8,7 +9,7 @@ export const CreateTask = () => {
     if(task){
       const date = (new Date()).toDateString();
       const data = JSON.stringify({task: task, date: date});
-      fetch("http://10.0.0.61:3001/createNewTask",{
+      fetch(vals.create,{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: data
