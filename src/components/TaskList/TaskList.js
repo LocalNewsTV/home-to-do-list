@@ -4,6 +4,13 @@ import {hookContext} from "../../App.js";
 import {ListItem} from '../ListItem/ListItem.js'
 export const TaskList = () => {
   const {taskList} = React.useContext(hookContext);
+  const handleExport = () => {
+    let copyString = ""
+    for(const data of taskList){
+      copyString += `${data.task}\n`;
+    }
+    navigator.clipboard.writeText(copyString);
+  }
 
   return (
     <>
@@ -21,6 +28,7 @@ export const TaskList = () => {
             })}
         </tbody>
       </table>
+      <input type="button" className="exportToClipboard" value="Export to Clipboard" onClick={handleExport} />
     </>
   );
 }

@@ -1,4 +1,7 @@
 #nav{
+z-index: 2;
+position: fixed;
+width: 100%;
 display: flex;
 flex-direction: center;
 background-color: rgb(59,59,56);
