@@ -21,10 +21,14 @@ export const CreateTask = () => {
       });
     }
   }
+  const handleKeyUp = (e) => {
+    if(e.key === 'Enter')
+      {handleSubmit(e)}
+  };
 
   return (
     <div className="flex createTask">
-      <input type="text" id="taskInput" placeholder="Task to complete" />
+      <input type="text" id="taskInput" placeholder="Task to complete" onKeyUp={handleKeyUp} />
       <button className="button" onClick={handleSubmit}>Add to List!</button>
     </div>
   );
