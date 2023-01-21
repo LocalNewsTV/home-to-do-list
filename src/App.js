@@ -15,16 +15,17 @@ export const hookContext = React.createContext();
 
 function App() { 
   const sampleDate = (new Date()).toDateString();
+  const sampleTask = "Sample Task"
   const sampleList = [
-    {task: "Sample Items", date: sampleDate},
-    {task: "This has no Database Connection", date: sampleDate},
-    {task: "So They cannot be removed", date: sampleDate},
-    {task: "Or added to", date: sampleDate},
+    {task: sampleTask, date: sampleDate},
+    {task: sampleTask, date: sampleDate},
+    {task: sampleTask, date: sampleDate},
   ];
+  const [taskType, setTaskType] = React.useState("todo")
   const [taskList, setTaskList] = React.useState([]);
   React.useEffect(() => {
     (async() => {
-      fetch(vals.get, { method: "GET" })
+      fetch(vals.get[taskType], { method: "GET" })
       .then((data) => data.json())
       .then((json) => {
         setTaskList(json);
@@ -33,10 +34,10 @@ function App() {
         setTaskList(sampleList);
       })
     })();
-  }, []);
+  }, [taskType]);
 
   return (
-    <hookContext.Provider value={{taskList, setTaskList}}>
+    <hookContext.Provider value={{taskList, setTaskList, taskType, setTaskType}}>
       <NavBar />
       <div className="App">
         <header className="App-header">

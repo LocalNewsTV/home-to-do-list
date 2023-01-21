@@ -3,7 +3,7 @@ import {hookContext} from "../../App.js";
 
 import {ListItem} from '../ListItem/ListItem.js'
 export const TaskList = () => {
-  const {taskList} = React.useContext(hookContext);
+  const {taskList, taskType} = React.useContext(hookContext);
   const handleExport = () => {
     let copyString = ""
     for(const data of taskList){
@@ -14,12 +14,12 @@ export const TaskList = () => {
 
   return (
     <>
-      <h1>Let's Get to Work!</h1>
+      <h1>{taskType === "todo" ? "Let's Get to Work!" : "Let's Get Shopping!"}</h1>
       <table className="taskList">
         <thead>
           <tr>
             <th className="header">Task</th>
-            <th className="header">Date Posted</th>
+            {taskType === "todo" ? <th className="header">Date Posted</th> : <></>}
           </tr>
         </thead>
         <tbody>

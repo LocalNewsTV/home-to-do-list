@@ -3,13 +3,13 @@ import {hookContext} from "../../App.js";
 const vals = require('../../routing_info.js');
 
 export const CreateTask = () => {
-  const { setTaskList} = React.useContext(hookContext);
+  const { setTaskList, taskType } = React.useContext(hookContext);
   const handleSubmit = (e) => {
     const task = document.getElementById('taskInput').value;
     if(task){
       const date = (new Date()).toDateString();
       const data = JSON.stringify({task: task, date: date});
-      fetch(vals.create,{
+      fetch(vals.create[taskType],{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: data
