@@ -8,8 +8,12 @@ export const TaskList = () => {
     let copyString = ""
     for(const data of taskList){
       copyString += `${data.task}\n`;
+    } 
+    try {
+      navigator.clipboard.writeText(copyString);
+    } catch(ex) {
+      alert("Writing to clipboard failed:\n" + copyString);
     }
-    navigator.clipboard.writeText(copyString);
   }
 
   return (

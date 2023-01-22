@@ -14,13 +14,7 @@ const vals = require('./routing_info.js');
 export const hookContext = React.createContext();
 
 function App() { 
-  const sampleDate = (new Date()).toDateString();
-  const sampleTask = "Sample Task"
-  const sampleList = [
-    {task: sampleTask, date: sampleDate},
-    {task: sampleTask, date: sampleDate},
-    {task: sampleTask, date: sampleDate},
-  ];
+
   const [taskType, setTaskType] = React.useState("todo")
   const [taskList, setTaskList] = React.useState([]);
   React.useEffect(() => {
@@ -31,6 +25,13 @@ function App() {
         setTaskList(json);
       })
       .catch(error => {
+        const sampleDate = (new Date()).toDateString();
+        const sampleTask = "Sample Task"
+        const sampleList = [
+          {task: sampleTask, date: sampleDate},
+          {task: sampleTask, date: sampleDate},
+          {task: sampleTask, date: sampleDate},
+        ];
         setTaskList(sampleList);
       })
     })();
