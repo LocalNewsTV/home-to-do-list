@@ -3,7 +3,7 @@ import {hookContext} from "../../App.js"
 const vals = require('../../routing_info.js');
 
 export const ListItem = ({task, date}) => {
-  const {setTaskList, taskType} = React.useContext(hookContext);
+  const {setTaskList, taskType, taskList} = React.useContext(hookContext);
   const handleDelete = (task) => {
     const data = JSON.stringify({"task": task, "date": date});
     fetch(vals.delete[taskType],{
@@ -14,7 +14,12 @@ export const ListItem = ({task, date}) => {
     .then((response) => response.json())
     .then((data) => {
       setTaskList(data);
-    });
+    })
+    .catch(ex => {
+      const temp = [...taskList];
+      temp.splice(temp.indexOf(temp.find(item => item.task === task)), 1);
+      setTaskList(temp);
+    })
   }
   return (
     <tr className="listItem">

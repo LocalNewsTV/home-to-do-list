@@ -28,7 +28,7 @@ function App() {
         const sampleDate = (new Date()).toDateString();
         const sampleTask = "Sample Task"
         const sampleList = [
-          {task: sampleTask, date: sampleDate},
+          {task: "No Active Database Connection", date: sampleDate},
           {task: sampleTask, date: sampleDate},
           {task: sampleTask, date: sampleDate},
         ];

@@ -3,7 +3,7 @@ import {hookContext} from "../../App.js";
 const vals = require('../../routing_info.js');
 
 export const CreateTask = () => {
-  const { setTaskList, taskType } = React.useContext(hookContext);
+  const { setTaskList, taskType, taskList } = React.useContext(hookContext);
   const handleSubmit = (e) => {
     const task = document.getElementById('taskInput').value;
     if(task){
@@ -17,8 +17,13 @@ export const CreateTask = () => {
       .then((response) => response.json())
       .then((data) => {
         setTaskList(data);
-        document.getElementById('taskInput').value = "";
+      })
+      .catch(ex => {
+        const temp = [...taskList];
+        temp.push({"task": task, "date": date});
+        setTaskList(temp);
       });
+      document.getElementById('taskInput').value = "";
     }
   }
   const handleKeyUp = (e) => {
