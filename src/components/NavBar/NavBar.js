@@ -1,20 +1,23 @@
 import React from 'react';
-import {hookContext} from "../../App.js";
+import { Logo } from '../Logo/Logo.js';
+import '../Logo/Logo.css';
+import { AppNav } from '../AppNav/AppNav.js';
+import '../AppNav/AppNav.css';
+
 
 export const NavBar = () => {
-  const {taskType, setTaskType} = React.useContext(hookContext);
-  const handleClick = () => {
-    setTaskType(taskType === "todo" ? "grocery" : "todo");
-  }
   return (
   <div id="nav">
     <div className="nav-left">
+      <Logo/>
       <ul>
-        <a className="navLink" href="https://github.com/LocalNewsTV/home-to-do-list">Repo</a>
+        <a className="navLink" href="https://github.com/LocalNewsTV/weather-app">Repo</a>
         <a className="navLink" href="https://github.com/LocalNewsTV">GitHub</a>
         <a className="navLink" href="https://LocalNewsTV.github.io/">Portfolio</a>
-        <span className="navLink" onClick={handleClick}>{taskType === "todo" ? "Groceries" : "Tasks"}</span>
       </ul>
+    </div>
+    <div className="nav-right">
+      <AppNav/>
     </div>
   </div>
   )
