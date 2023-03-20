@@ -19,21 +19,12 @@ function App() {
   const [taskList, setTaskList] = React.useState([]);
   React.useEffect(() => {
     (async() => {
-      fetch(vals.get[taskType], { method: "GET" })
-      .then((data) => data.json())
-      .then((json) => {
-        setTaskList(json);
-      })
-      .catch(error => {
-        const sampleDate = (new Date()).toDateString();
-        const sampleTask = "Sample Task"
-        const sampleList = [
-          {task: "No Active Database Connection", date: sampleDate},
-          {task: sampleTask, date: sampleDate},
-          {task: sampleTask, date: sampleDate},
-        ];
-        setTaskList(sampleList);
-      })
+      try {
+        console.log(JSON.parse(localStorage.getItem(taskType)));
+        setTaskList(JSON.parse(localStorage.getItem(taskType)));
+      } catch(ex){
+        console.log(ex);
+      }
     })();
   }, [taskType]);
 
