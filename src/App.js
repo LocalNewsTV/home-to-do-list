@@ -9,7 +9,6 @@ import './components/TaskList/TaskList.css';
 import './components/CreateTask/CreateTask.css';
 import './components/NoTasks/NoTasks.css';
 import './App.css';
-const vals = require('./routing_info.js');
 
 export const hookContext = React.createContext();
 
@@ -20,8 +19,11 @@ function App() {
   React.useEffect(() => {
     (async() => {
       try {
-        console.log(JSON.parse(localStorage.getItem(taskType)));
-        setTaskList(JSON.parse(localStorage.getItem(taskType)));
+        if(localStorage.getItem(taskType)){
+          setTaskList(JSON.parse(localStorage.getItem(taskType)));
+        } else {
+          localStorage.setItem(taskType, JSON.stringify([]));
+        }
       } catch(ex){
         console.log(ex);
       }

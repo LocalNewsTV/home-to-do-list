@@ -21,6 +21,7 @@
   border-radius: 10px;
   padding: 0px 10px;
   color: black;
+  cursor: pointer;
 }
 @media only screen and (max-width: 667px) {
   .createTask #taskInput {

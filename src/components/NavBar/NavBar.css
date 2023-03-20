@@ -24,6 +24,7 @@
 }
 .navLink:hover {
   color: #CC5500;
+  cursor: hover;
 }
 
 .nav-right {
