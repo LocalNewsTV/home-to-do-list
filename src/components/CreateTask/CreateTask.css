@@ -26,7 +26,6 @@
 @media only screen and (max-width: 667px) {
   .createTask #taskInput {
     max-width: 200px;
-
   }
   .flex {
     margin: 10px;

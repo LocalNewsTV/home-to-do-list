@@ -2,11 +2,8 @@ import React from "react"
 import { hookContext } from "../../App"
 
 export const AppNav = () => {
-  const {taskType, setTaskType, setTaskList} = React.useContext(hookContext);
-  const handleClear = () => {
-    localStorage.setItem(taskType, JSON.stringify([]));
-    setTaskList([]);
-  }
+  const {taskType, setTaskType} = React.useContext(hookContext);
+
   return (
     <>
       <input 
@@ -15,12 +12,6 @@ export const AppNav = () => {
         onClick={(evt)=> setTaskType(taskType === "todo" ? "grocery" : "todo")}
         className={"navBarButton"} 
       />
-      {/* <input
-        type="button"
-        value={"Clear List"}
-        onClick={handleClear}
-        className={"navBarButton"}
-      /> */}
     </>
   )
 }
