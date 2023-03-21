@@ -24,7 +24,7 @@ export const TaskList = () => {
         <thead className={"listTableHead"}>
           <tr className={"listHeadRow"}>
             <th className="header">Task</th>
-            {taskType === "todo" ? <th className="header">Date Posted</th> : <th>&nbsp;</th>}
+            {taskType === "todo" ? <th className="header date">Date Posted</th> : <th>&nbsp;</th>}
             <th>&nbsp;</th>
           </tr>
         </thead>

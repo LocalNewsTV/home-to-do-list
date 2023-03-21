@@ -41,6 +41,9 @@
   .listItem .date, .listItem .task, .listItem .delete{
     width: 100%;
   }
+  .listItem .date {
+    display: none !important;
+  }
   .delete .buttonDelete {
     width: 75px;
   }

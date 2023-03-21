@@ -48,5 +48,7 @@
   .listTableBody {
     height: 300px;
   }
-
+  .taskList .date {
+    display: none;
+  }
 }
