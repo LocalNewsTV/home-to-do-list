@@ -2,7 +2,7 @@ import React from 'react';
 import {hookContext} from "../../App.js"
 const vals = require('../../routing_info.js');
 
-export const ListItem = ({task, date}) => {
+export const ListItem = ({task, date, className}) => {
   const {setTaskList, taskType, taskList} = React.useContext(hookContext);
   const handleDelete = (task) => {
     const data = JSON.stringify({"task": task, "date": date});
@@ -22,7 +22,7 @@ export const ListItem = ({task, date}) => {
     })
   }
   return (
-    <tr className="listItem">
+    <tr className={`listItem ${className}`}>
       <td className="task">{task}</td>
       {taskType === "todo" ? <td className="date">{date}</td> : <></>}
       <td className="delete"><button className="buttonDelete" onClick={handleDelete.bind(this, task, date)}>Remove</button></td>
