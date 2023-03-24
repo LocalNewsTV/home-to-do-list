@@ -6,6 +6,9 @@
   margin: 150px;
   padding: 15px;
 }
+.darker {
+  background-color: #4f834f !important;
+}
 .listItem .task, .listItem .delete, .listItem .date {
   width: 300px;
   height: 50px;
@@ -32,10 +35,14 @@
 }
 .delete .buttonDelete:hover {
   background: black;
+  cursor:pointer;
 }
 @media only screen and (max-width: 667px) {
   .listItem .date, .listItem .task, .listItem .delete{
     width: 100%;
+  }
+  .listItem .date {
+    display: none !important;
   }
   .delete .buttonDelete {
     width: 75px;
