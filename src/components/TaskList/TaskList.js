@@ -7,12 +7,12 @@ export const TaskList = () => {
   const handleExport = () => {
     let copyString = ""
     for(const data of taskList){
-      copyString += `${data.task}\n`;
+      copyString += `${data.task},\n`;
     } 
     try {
       navigator.clipboard.writeText(copyString);
     } catch(ex) {
-      alert("Writing to clipboard failed:\n" + copyString);
+      alert("Writing to clipboard failed:\n" + copyString + "\n You are seeing this alert because you're running this page on a non-HTTPS connection");
     }
   }
 
@@ -20,15 +20,16 @@ export const TaskList = () => {
     <>
       <h1>{taskType === "todo" ? "Let's Get to Work!" : "Let's Get Shopping!"}</h1>
       <table className="taskList">
-        <thead>
-          <tr>
+        <thead className={"listTableHead"}>
+          <tr className={"listHeadRow"}>
             <th className="header">Task</th>
-            {taskType === "todo" ? <th className="header">Date Posted</th> : <></>}
+            {taskType === "todo" ? <th className="header date">Date Posted</th> : <th>&nbsp;</th>}
+            <th>&nbsp;</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={"listTableBody"}>
             {taskList.map((data, index) => {
-              return <ListItem {...data} key={index} />
+              return <ListItem {...data} key={index} className={index % 2 === 0 ? "darker" : ""}/>
             })}
         </tbody>
       </table>
