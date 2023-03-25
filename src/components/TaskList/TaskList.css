@@ -1,10 +1,12 @@
 .taskList {
   text-align: left;
   border-collapse: collapse;
+  /* display: block; */
 }
 
 .taskList .header {
   padding-left: 10px;
+  width: 33%;
 }
 .exportToClipboard {
   border: 1px solid black;
@@ -15,14 +17,38 @@
 }
 .exportToClipboard:hover {
   background-color: darkgray;
+  cursor: pointer;
 }
 .exportToClipboard:active {
   background-color: black;
   color: white;
 }
+.listTableBody {
+  display: block;
+  height: 500px;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.listTableBody::-webkit-scrollbar{
+  display: none;
+}
+.listHeadRow, .listTableHead{
+  display: flex;
+  width: 100%;
+}
+
 @media only screen and (max-width: 667px) {
   .taskList{
     width: 100%;
     margin: 5px;
+  }
+  .listTableBody {
+    height: 300px;
+  }
+  .taskList .date {
+    display: none;
   }
 }
