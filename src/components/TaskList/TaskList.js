@@ -19,7 +19,7 @@ export const TaskList = () => {
 
   return (
     <>
-      <h1>{taskType === "todo" ? "Let's Get to Work!" : "Let's Get Shopping!"}</h1>
+      <h2>{taskType === "todo" ? "Let's Get to Work!" : "Let's Get Shopping!"}</h2>
       <table className="taskList">
         <thead className={"listTableHead"}>
           <tr className={"listHeadRow"}>

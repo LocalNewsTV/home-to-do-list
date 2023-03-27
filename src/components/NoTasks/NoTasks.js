@@ -5,8 +5,8 @@ export const NoTasks = () => {
   const { taskType } = React.useContext(hookContext);
  return (
   <>{ taskType === "todo"  
-    ? <h1 className="h1">All Tasks are Complete!</h1>
-    : <h1 className="h1">Nothing to shop for?</h1>
+    ? <h2 className="h2">All Tasks are Complete!</h2>
+    : <h2 className="h2">Nothing to shop for?</h2>
     }
     <h6>You can change that by adding to your list</h6>
   </>);

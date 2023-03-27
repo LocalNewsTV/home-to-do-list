@@ -27,17 +27,18 @@
   display: block;
   height: 500px;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-.listTableBody::-webkit-scrollbar{
-  display: none;
+  scrollbar-width: 5px;  /* Firefox */
 }
 .listHeadRow, .listTableHead{
   display: flex;
   width: 100%;
+}
+@media only screen and (max-height: 820px) {
+ .listTableBody{
+    max-height: 40vh;
+ } 
 }
 
 @media only screen and (max-width: 667px) {

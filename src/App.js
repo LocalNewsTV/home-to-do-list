@@ -34,12 +34,10 @@ function App() {
     <hookContext.Provider value={{taskList, setTaskList, taskType, setTaskType}}>
       <NavBar />
       <div className="App">
-        <header className="App-header">
           {taskList.length === 0
           ? <NoTasks />
           : <TaskList />}
           <CreateTask />
-        </header>
       </div>
     </hookContext.Provider>
   );
