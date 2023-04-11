@@ -30,7 +30,7 @@ export const TaskList = () => {
         </thead>
         <tbody className={"listTableBody"}>
             {taskList.map((data, index) => {
-              return <ListItem {...JSON.parse(data)} key={index} className={index % 2 === 0 ? "darker" : ""}/>
+              return <ListItem {...JSON.parse(data)} key={index} id={index} className={index % 2 === 0 ? "darker" : ""}/>
             })}
         </tbody>
       </table>
