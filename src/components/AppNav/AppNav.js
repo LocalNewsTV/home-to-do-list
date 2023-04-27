@@ -4,10 +4,33 @@ import axios from "axios";
 import vals from '../../routing_info.js'
 
 export const AppNav = () => {
-  const { setTaskType, session } = React.useContext(hookContext);
+  const { taskType, setTaskType, session, setTaskList } = React.useContext(hookContext);
   const [lists, setLists] = React.useState([]);
   const handleChange = (evt) => {
     setTaskType(evt.target.value || "");
+  }
+  const handleDeleteList = async () => {
+    const removeList = prompt("List To Delete:")
+    if (lists.indexOf(removeList) !== -1) {
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${session}`
+        },
+        data: {
+          "list": removeList
+        }
+      }
+      const response = await axios.delete(`${vals.root}/api/userlists`, config)
+      if (response.status === 204) {
+        const newList = [...lists];
+        newList.splice(newList.indexOf(removeList), 1);
+        setLists(newList);
+        if (taskType === removeList) {
+          setTaskType("");
+          setTaskList([]);
+        }
+      }
+    }
   }
   const handleNewList = async () => {
     try {
@@ -23,6 +46,7 @@ export const AppNav = () => {
           const temp = [...lists];
           temp.push(newList);
           setLists(temp)
+          setTaskType(newList);
         }
       }
     } catch (ex) {
@@ -43,16 +67,23 @@ export const AppNav = () => {
 
   return (
     <>
-      <input
-        type={"button"}
-        value={"Create New List"}
-        className={"navBarButton"}
-        onClick={handleNewList}
-      />
-      <select className={"navSelect"} onChange={handleChange}>
+      <select className={"navSelect"} onChange={handleChange} value={taskType}>
         <option value={""} key={0} >Select a List...</option>
         {lists.map((item, index) => <ListOption item={item} key={index + 1} />)}
       </select>
+      <input
+        type={"button"}
+        value={"Add"}
+        className={"navBarButton"}
+        onClick={handleNewList}
+      />
+      <input
+        type={"button"}
+        value={"Remove"}
+        className={"navBarButton"}
+        onClick={handleDeleteList}
+      />
+
     </>
   )
 }

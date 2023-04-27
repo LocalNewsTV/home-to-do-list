@@ -4,13 +4,14 @@
   padding: 3px 10px;
   border-radius: 5px;
   background-color: #669966;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 .navSelect {
   width: 150px;
   border: 1px solid black;
   height: 30px;
   padding-left: 10px;
+  margin: 0 5px;
   text-transform: capitalize;
 }
 
