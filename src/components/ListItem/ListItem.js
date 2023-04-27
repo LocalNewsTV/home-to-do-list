@@ -16,7 +16,6 @@ export const ListItem = ({ task, date, className, id }) => {
         }
       }
       const response = await axios.delete(`${vals.root}/api/list`, config);
-      console.log(response);
       if (response.status === 200) {
         const temp = [...taskList];
         temp.splice(temp.indexOf(temp.find(item => item.id === id)), 1);

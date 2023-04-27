@@ -21,9 +21,7 @@ export const CreateTask = () => {
           }
         }
         const response = await axios.post(`${vals.root}/api/list`, body, config);
-        console.log(response);
         if (response.status === 201) {
-          console.log("Worked")
           let temp = [...taskList]
           temp.push(response.data)
           setTaskList(temp)

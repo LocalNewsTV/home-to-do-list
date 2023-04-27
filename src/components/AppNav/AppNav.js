@@ -7,7 +7,6 @@ export const AppNav = () => {
   const {setTaskType, session} = React.useContext(hookContext);
   const [lists, setLists] = React.useState([]);
   const handleChange = (evt) => {
-    console.log(evt.target.value)
     setTaskType(evt.target.value);
   }
   React.useEffect(()=>{
