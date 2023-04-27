@@ -24,7 +24,7 @@ export const ListItem = ({task, date, className}) => {
   return (
     <tr className={`listItem ${className}`}>
       <td className="task">{task}</td>
-      {taskType === "todo" ? <td className="date">{date}</td> : <></>}
+      <td className="date">{new Date(date).toDateString()}</td>
       <td className="delete"><button className="buttonDelete" onClick={handleDelete.bind(this, task, date)}>Remove</button></td>
     </tr>
   )

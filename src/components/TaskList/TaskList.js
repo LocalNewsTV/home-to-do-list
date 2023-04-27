@@ -18,18 +18,18 @@ export const TaskList = () => {
 
   return (
     <>
-      <h1>{taskType === "todo" ? "Let's Get to Work!" : "Let's Get Shopping!"}</h1>
+      <h1>Let's Get to Work!</h1>
       <table className="taskList">
         <thead className={"listTableHead"}>
           <tr className={"listHeadRow"}>
             <th className="header">Task</th>
-            {taskType === "todo" ? <th className="header date">Date Posted</th> : <th>&nbsp;</th>}
+            <th className="header date">Date Posted</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody className={"listTableBody"}>
             {taskList.map((data, index) => {
-              return <ListItem {...data} key={index} className={index % 2 === 0 ? "darker" : ""}/>
+              return <ListItem task={data.content.item} date={data.content.date} key={index} className={index % 2 === 0 ? "darker" : ""}/>
             })}
         </tbody>
       </table>

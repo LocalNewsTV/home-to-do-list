@@ -6,3 +6,16 @@
   background-color: #669966;
   margin: 0 10px;
 }
+.navSelect {
+  width: 150px;
+  border: 1px solid black;
+  height: 30px;
+  padding-left: 10px;
+  text-transform: capitalize;
+}
+
+.navOption {
+  text-transform: capitalize;
+  background-color: white;
+  padding-left: 10px;
+}

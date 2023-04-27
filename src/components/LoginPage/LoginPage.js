@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { hookContext } from '../../App';
+import vals from '../../routing_info.js';
+
 export const LoginPage = () => {
   const { setSession } = React.useContext(hookContext);
   const handleUserChange = (evt) => {
@@ -19,7 +21,7 @@ export const LoginPage = () => {
           username: username,
           password: password
         };
-        const response = await axios.post("https://localnewstv-todo.onrender.com/api/login", payload);
+        const response = await axios.post(`${vals.root}/api/login`, payload);
 
         if (response.status === 200 && response.data.token) {
           setSession(response.data.token);
@@ -43,7 +45,7 @@ export const LoginPage = () => {
         email: email
       }
       try{
-        const response = await axios.post("https://localnewstv-todo.onrender.com/api/signup", payload)
+        const response = await axios.post(`${vals.root}/api/signup`, payload)
         if(response.status === 200){
             setBadSignUp(true)
         } else if(response.status === 201) {

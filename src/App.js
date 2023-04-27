@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {CreateTask} from './components/CreateTask/CreateTask.js';
 import {NoTasks} from './components/NoTasks/NoTasks.js';
 import {TaskList} from './components/TaskList/TaskList.js';
@@ -17,30 +18,24 @@ export const hookContext = React.createContext();
 
 function App() { 
   const [session, setSession] = React.useState("");
-  const [taskType, setTaskType] = React.useState("todo")
+  const [taskType, setTaskType] = React.useState("");
   const [taskList, setTaskList] = React.useState([]);
   React.useEffect(() => {
     (async() => {
-      fetch(vals.get[taskType], { method: "GET" })
-      .then((data) => data.json())
-      .then((json) => {
-        setTaskList(json);
-      })
-      .catch(error => {
-        const sampleDate = (new Date()).toDateString();
-        const sampleTask = "Sample Task"
-        const sampleList = [
-          {task: "No Active Database Connection", date: sampleDate},
-          {task: sampleTask, date: sampleDate},
-          {task: sampleTask, date: sampleDate},
-        ];
-        setTaskList(sampleList);
-      })
+      if(session && taskType) {
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${session}`
+        },
+      }
+      const { data } = await axios.post(`${vals.root}/api/listItems`,{listName: taskType}, config);
+      setTaskList(data);
+    }
     })();
-  }, [taskType]);
+  }, [session, taskType]);
 
   return (
-    <hookContext.Provider value={{taskList, setTaskList, taskType, setTaskType, setSession }}>
+    <hookContext.Provider value={{taskList, setTaskList, taskType, setTaskType, session, setSession }}>
       <NavBar />
       <div className="App">
         <header className="App-header">
