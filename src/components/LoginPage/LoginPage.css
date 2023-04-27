@@ -64,11 +64,7 @@ form {
   align-items: center;
 }
 @media only screen and (max-width: 667px) {
-  .createTask #taskInput {
-    max-width: 200px;
-
-  }
-  .flex {
-    margin: 10px;
+  .loginFormCont {
+    width: 100%;
   }
 }
