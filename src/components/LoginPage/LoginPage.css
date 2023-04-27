@@ -1,0 +1,63 @@
+form {
+  color: black;
+}
+.loginFormCont {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+  background-color: #669966;
+  height: 450px;
+  width: 500px;
+  border: 2px solid black;
+}
+.signInSignUp {
+  font-size: 12px;
+  cursor: pointer;
+  color: cyan;
+}
+.formButton {
+  width: 110px;
+  height: 30px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+}
+.formHide {
+  width: 55px;
+}
+.formJust {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px 60px 5px 20px;
+}
+.loginLabel {
+  font-size: 14px;
+}
+.formInput {
+  height: 30px;
+  border: 1px solid black;
+  padding: 0 10px;
+  margin: 0 20px;
+}
+.formFlex {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 667px) {
+  .createTask #taskInput {
+    max-width: 200px;
+
+  }
+  .flex {
+    margin: 10px;
+  }
+}
