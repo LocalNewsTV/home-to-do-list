@@ -45,7 +45,7 @@ function App() {
               {taskList.length === 0
               ? <NoTasks />
               : <TaskList />}
-              <CreateTask />
+              {taskType && <CreateTask />}
             </>
           }
         </header>

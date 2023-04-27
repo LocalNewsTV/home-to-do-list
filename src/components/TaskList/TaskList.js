@@ -7,7 +7,7 @@ export const TaskList = () => {
   const handleExport = () => {
     let copyString = ""
     for(const data of taskList){
-      copyString += `${data.task},\n`;
+      copyString += `${data.content.item},\n`;
     } 
     try {
       navigator.clipboard.writeText(copyString);

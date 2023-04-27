@@ -7,7 +7,7 @@ export const AppNav = () => {
   const { setTaskType, session } = React.useContext(hookContext);
   const [lists, setLists] = React.useState([]);
   const handleChange = (evt) => {
-    setTaskType(evt.target.value);
+    setTaskType(evt.target.value || "");
   }
   const handleNewList = async () => {
     try {
@@ -40,6 +40,7 @@ export const AppNav = () => {
       setLists(data);
     })();
   }, [session])
+
   return (
     <>
       <input
@@ -49,7 +50,7 @@ export const AppNav = () => {
         onClick={handleNewList}
       />
       <select className={"navSelect"} onChange={handleChange}>
-        <ListOption item={""} key={0} />
+        <option value={""} key={0} >Select a List...</option>
         {lists.map((item, index) => <ListOption item={item} key={index + 1} />)}
       </select>
     </>
