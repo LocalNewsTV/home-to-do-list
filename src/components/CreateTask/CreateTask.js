@@ -1,34 +1,41 @@
 import React from "react";
-import {hookContext} from "../../App.js";
+import axios from 'axios';
+import { hookContext } from "../../App.js";
 const vals = require('../../routing_info.js');
 
 export const CreateTask = () => {
-  const { setTaskList, taskType, taskList } = React.useContext(hookContext);
-  const handleSubmit = (e) => {
-    const task = document.getElementById('taskInput').value;
-    if(task){
-      const date = (new Date()).toDateString();
-      const data = JSON.stringify({task: task, date: date});
-      fetch(vals.create[taskType],{
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: data
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        setTaskList(data);
-      })
-      .catch(ex => {
-        const temp = [...taskList];
-        temp.push({"task": task, "date": date});
-        setTaskList(temp);
-      });
-      document.getElementById('taskInput').value = "";
+  const { setTaskList, taskType, taskList, session } = React.useContext(hookContext);
+  const handleSubmit = async (e) => {
+    try {
+      const task = document.getElementById('taskInput').value;
+      if (task) {
+        const config = {
+          headers: {
+            'Authorization': `Bearer ${session}`
+          }
+        }
+        const body = {
+          'listName': taskType,
+          'content': {
+            item: task
+          }
+        }
+        const response = await axios.post(`${vals.root}/api/list`, body, config);
+        console.log(response);
+        if (response.status === 201) {
+          console.log("Worked")
+          let temp = [...taskList]
+          temp.push(response.data)
+          setTaskList(temp)
+        }
+        document.getElementById('taskInput').value = "";
+      }
+    } catch (ex) {
+      console.log(ex);
     }
   }
   const handleKeyUp = (e) => {
-    if(e.key === 'Enter')
-      {handleSubmit(e)}
+    if (e.key === 'Enter') { handleSubmit(e) }
   };
 
   return (

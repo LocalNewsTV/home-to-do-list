@@ -4,7 +4,7 @@ import axios from "axios";
 import vals from '../../routing_info.js'
 
 export const AppNav = () => {
-  const {taskType, setTaskType, session} = React.useContext(hookContext);
+  const {setTaskType, session} = React.useContext(hookContext);
   const [lists, setLists] = React.useState([]);
   const handleChange = (evt) => {
     console.log(evt.target.value)
@@ -15,7 +15,7 @@ export const AppNav = () => {
       const config = {
         headers: {
           'Authorization': `Bearer ${session}`
-        },
+        }
       }
       const {data} = await axios.get(`${vals.root}/api/userlists`, config);
       setLists(data);
