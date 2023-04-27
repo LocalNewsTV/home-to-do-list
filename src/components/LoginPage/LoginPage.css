@@ -11,6 +11,9 @@ form {
   width: 500px;
   border: 2px solid black;
 }
+.formWarning {
+  font-size: 14px;
+}
 .signInSignUp {
   font-size: 12px;
   cursor: pointer;
@@ -23,6 +26,14 @@ form {
   cursor: pointer;
   background-color: white;
   border: 1px solid black;
+}
+.formButton:hover {
+  background-color: gray;
+}
+.formButton:active {
+  background-color: rgb(41, 41, 41);
+  color: white;
+
 }
 .formHide {
   width: 55px;

@@ -19,10 +19,10 @@ export const LoginPage = () => {
           username: username,
           password: password
         };
-        const { data } = await axios.post("https://localnewstv-todo.onrender.com/api/login", payload);
-        console.log(data);
-        if (data.token) {
-          setSession(data.token);
+        const response = await axios.post("https://localnewstv-todo.onrender.com/api/login", payload);
+
+        if (response.status === 200 && response.data.token) {
+          setSession(response.data.token);
           setPassword("");
           setUsername("");
           setEmail("");
@@ -42,13 +42,25 @@ export const LoginPage = () => {
         password: password,
         email: email
       }
-      const response = await axios.post("https://localnewstv-todo.onrender.com/api/signup", payload)
-      console.log(response.data);
+      try{
+        const response = await axios.post("https://localnewstv-todo.onrender.com/api/signup", payload)
+        if(response.status === 200){
+            setBadSignUp(true)
+        } else if(response.status === 201) {
+            setSignUp(false);
+            setBadSignUp(false);
+        }
+      }
+      catch(ex) {
+        console.log(ex);
+        setBadSignUp(true);
+      }
     }
   }
 
   const [signUp, setSignUp] = React.useState(false);
-  const [badCredentials, setBadCredentials] = React.useState(false);
+  const [badSignUp, setBadSignUp] = React.useState(false);
+  const [badLogin, setBadCredentials] = React.useState(false);
   const [showPass, setShowPass] = React.useState(false)
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -84,6 +96,7 @@ export const LoginPage = () => {
             type={"email"}
             handler={handleEmailChange}
           />
+
         </div>
         : <></>
       }
@@ -91,7 +104,10 @@ export const LoginPage = () => {
         ? <FormButton text={"Login"} handler={handleLogin} />
         : <FormButton text={"Sign Up"} handler={handleSignUp} />
       }
-      {badCredentials && <p>Bad Username or Password Entered</p>}
+        <p className={"formWarning"}>
+          {!signUp && badLogin ? "Bad Username or Password Entered" : ""}
+          {signUp && badSignUp ? "Email or Username already in use" : ""}
+        </p>
       </form>
       <p onClick={setSignUp.bind(this, !signUp)} className={"signInSignUp"}>
         {signUp ? "Have an account? Sign in here" : "Need an account? Sign up"}
